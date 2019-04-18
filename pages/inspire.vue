@@ -6,33 +6,100 @@
       </v-img>
     </v-flex>
     <v-flex md6 xs12>
-      <v-layout align-space-around justify-space-around  row fill-height fill-width wrap>
-      <v-flex md12 xs4>
-      <v-btn color="success">Normal</v-btn>
-      </v-flex>
-      <v-flex md12 xs4>
-      <v-btn color="success">Success</v-btn>
-      </v-flex>
-      <v-flex md12 xs4>
-      <v-btn color="success">Success</v-btn>
-      </v-flex>
+      <!--<v-layout align-space-around justify-space-around  row fill-height fill-width wrap>-->
+      <!--<v-flex md12 xs4>-->
+      <!--<v-btn color="success">Normal</v-btn>-->
+      <!--</v-flex>-->
+      <!--<v-flex md12 xs4>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--</v-flex>-->
+      <!--<v-flex md12 xs4>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--</v-flex>-->
 
-      <v-btn color="success">Success</v-btn>
-      <v-btn color="success">Success</v-btn>
-      <v-btn color="success">Success</v-btn>
-      <v-btn color="success">Success</v-btn>
-      <v-btn color="success">Success</v-btn>
-      <v-btn color="success">Success</v-btn>
-      <v-btn color="success">Success</v-btn>
-      <v-btn color="success">Success</v-btn>
-    <v-layout align-space-around justify-space-around  row fill-height fill-width>
-          <v-btn color="success">Previous</v-btn>
-          <v-btn color="success">Mark</v-btn>
-          <v-btn color="success">Next</v-btn>
-    </v-layout>
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+      <!--<v-btn color="success">Success</v-btn>-->
+    <!--<v-layout align-space-around justify-space-around  row fill-height fill-width>-->
+          <!--<v-btn color="success">Previous</v-btn>-->
+          <!--<v-btn color="success">Mark</v-btn>-->
+          <!--<v-btn color="success">Next</v-btn>-->
+    <!--</v-layout>-->
 
-      </v-layout>
+      <!--</v-layout>-->
 
+      <v-item-group>
+        <v-container grid-list-md>
+          <v-layout wrap>
+            <v-flex
+              v-for="n in 12"
+              :key="n"
+              xs3
+              md3
+            >
+              <v-item>
+                <v-card
+
+                  slot-scope="{ active, toggle }"
+                  :color="active ? 'primary' : ''"
+                  class="d-flex align-center card-custom"
+                  dark
+
+                  @click="toggle"
+                >
+                  <v-scroll-y-transition>
+                    <div
+                      v-if="active"
+                      class="display-3 text-xs-center"
+                    >
+                      Active
+                    </div>
+                  </v-scroll-y-transition>
+                </v-card>
+              </v-item>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-item-group>
+
+      <v-item-group>
+        <v-container grid-list-md>
+          <v-layout wrap>
+            <v-flex
+              v-for="n in 3"
+              :key="n"
+              xs4
+              md4
+            >
+              <v-item>
+                <v-card
+
+                  slot-scope="{ active, toggle }"
+                  :color="active ? 'primary' : ''"
+                  class="d-flex align-center card-custom"
+                  dark
+
+                  @click="toggle"
+                >
+                  <v-scroll-y-transition>
+                    <div
+                      v-if="active"
+                      class="display-3 text-xs-center"
+                    >
+                      Active
+                    </div>
+                  </v-scroll-y-transition>
+                </v-card>
+              </v-item>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-item-group>
 
     </v-flex>
   </v-layout> 
@@ -98,10 +165,17 @@
 </script>
 
 <style>
-@media (max-width: 425     px) {
+
+  .card-custom{
+    height: 100px;
+  }
+@media (max-width: 425px) {
 .temp{
   flex-direction: column 
 }
+  .card-custom{
+    height: 30px;
+  }
 
 .image{
   /* object-fit: cover; */
@@ -118,6 +192,8 @@
   /* width: 80vh; */
   /* width: 100v÷w; */
   }
+
+
 
 
 
