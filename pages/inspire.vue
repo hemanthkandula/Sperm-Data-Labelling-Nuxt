@@ -2,8 +2,11 @@
  <v-container>
   <v-layout class="temp" row wrap>
     <v-flex md6 xs12>
-      <v-img class="image" :aspect-ratio="1" src="/img.png">
-      </v-img>
+      <!-- <v-img class="image" :aspect-ratio="1" src="/img.png"> -->
+      <!-- </v-img> -->
+
+      Wow
+      
     </v-flex>
     <v-flex md6 xs12>
       <!--<v-layout align-space-around justify-space-around  row fill-height fill-width wrap>-->
