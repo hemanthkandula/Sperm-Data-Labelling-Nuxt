@@ -27,13 +27,15 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
-                  <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+                  <v-text-field prepend-icon="person" name="login" v-model="username" label="Login" type="text"></v-text-field>
+                  <v-text-field id="password" prepend-icon="lock" v-model="password" name="password" label="Password" type="password"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">Signup</v-btn>
+                <v-btn  @click="postPost" color="primary">Signup</v-btn>
+
+
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -44,12 +46,56 @@
 </template>
 
 <script>
+const axios = require('axios');
+
   export default {
     data: () => ({
-      drawer: null
+      drawer: null,
+      username: "",
+      password: "",
+      resp:""
     }),
     props: {
       source: String
+    },
+    methods:{
+
+        postPost:function(){
+
+
+           let data = {
+      'username': this.username,
+      'password': this.password
+ }
+              axios.post("https://cors-anywhere.herokuapp.com/https://shafieelabdatalabeling.tk/login", data, {headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+          
+                }})
+
+            .then((response) => {
+
+              this.resp= response.data.user
+                            var res = response.data.user
+
+              console.log(response.data.user)
+              // this.$router.push({ name: 'user',params : { res} }) // -> /user/123
+              this.$router.push({ path: `/user/${res}` }) // -> /user/123
+
+
+ 
+                // dispatch({type: FOUND_USER, data: response.data[0]})
+            })
+            .catch((error) => {
+                            this.resp= error
+                            console.error(error)
+
+                // dispatch({type: ERROR_FINDING_USER})
+            })
     }
+
+    }
+  
   }
 </script>
