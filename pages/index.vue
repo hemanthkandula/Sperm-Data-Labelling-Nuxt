@@ -52,8 +52,8 @@
             color="primary"
             flat
             nuxt
-            to="/inspire"
-          >Continue</v-btn>
+            to="/login"
+          >LOGIN</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
