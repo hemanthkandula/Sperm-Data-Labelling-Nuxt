@@ -67,7 +67,7 @@ const axios = require('axios');
       'username': this.username,
       'password': this.password
  }
-              axios.post("https://cors-anywhere.herokuapp.com/https://shafieelabdatalabeling.tk/login", data, {headers: {
+              axios.post("https://cors-anywhere.herokuapp.com/https://shafieelabdatalabeling.tk/register", data, {headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
@@ -76,12 +76,9 @@ const axios = require('axios');
 
             .then((response) => {
 
-              this.resp= response.data.user
-                            var res = response.data.user
-
               console.log(response.data.user)
               // this.$router.push({ name: 'user',params : { res} }) // -> /user/123
-              this.$router.push({ path: `/user/${res}` }) // -> /user/123
+              this.$router.push({ path: `/login` }) // -> /user/123
 
 
  

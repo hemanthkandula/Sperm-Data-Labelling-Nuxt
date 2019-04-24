@@ -30,24 +30,24 @@
       app
     >
       <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-btn
+      <!-- <v-btn
         icon
         @click.stop="miniVariant = !miniVariant"
       >
         <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
+      </v-btn> -->
+      <!-- <v-btn
         icon
         @click.stop="clipped = !clipped"
       >
         <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
+      </v-btn> -->
+      <!-- <v-btn
         icon
         @click.stop="fixed = !fixed"
       >
         <v-icon>remove</v-icon>
-      </v-btn>
+      </v-btn> -->
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-btn
@@ -94,21 +94,28 @@ export default {
       drawer: false,
       fixed: false,
       items: [
-        {
-          icon: 'apps',
-          title: 'Welcome',
-          to: '/'
-        },
+
         {
           icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
+          title: 'Annotate',
+          to: '/user'
+        },
+                {
+          icon: 'bubble_chart',
+          title: 'Login',
+          to: '/login'
+        },
+                {
+          icon: 'bubble_chart',
+          title: 'Signup',
+          to: '/signup'
         }
+
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Shafiee Lab - Image annotator'
     }
   }
 }
