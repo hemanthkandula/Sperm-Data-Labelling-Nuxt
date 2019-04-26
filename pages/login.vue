@@ -81,11 +81,14 @@ const axios = require('axios');
 
               console.log(response.data.user)
               // this.$router.push({ name: 'user',params : { res} }) // -> /user/123
-              this.$router.push({ path: `/user/${res}` }) // -> /user/123
+              this.$router.push({ path: `/slide/${res}` }) // -> /user/123
+
+              // this.$router.push({ path: 'user', query: { plan: 'private' } })
 
 
- 
-                // dispatch({type: FOUND_USER, data: response.data[0]})
+
+
+              // dispatch({type: FOUND_USER, data: response.data[0]})
             })
             .catch((error) => {
                             this.resp= error
