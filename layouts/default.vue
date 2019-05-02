@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app light>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -50,19 +50,19 @@
       </v-btn> -->
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn
+      <!-- <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
       >
-        <v-icon>menu</v-icon>
+        <!-- <v-icon>menu</v-icon> -->
       </v-btn>
     </v-toolbar>
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
-    </v-content>
-    <v-navigation-drawer
+    </v-content> -->
+    <!-- <v-navigation-drawer
       v-model="rightDrawer"
       :right="right"
       temporary
@@ -76,7 +76,7 @@
           <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
         </v-list-tile>
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
     <v-footer
       :fixed="fixed"
       app
@@ -95,11 +95,6 @@ export default {
       fixed: false,
       items: [
 
-        {
-          icon: 'bubble_chart',
-          title: 'Annotate',
-          to: '/user'
-        },
                 {
           icon: 'bubble_chart',
           title: 'Login',

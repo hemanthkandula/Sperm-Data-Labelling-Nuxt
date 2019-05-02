@@ -1,15 +1,15 @@
 <template>
   <v-container>
     <v-layout class="temp" row wrap>
-      <v-flex md6 xs12>
-        <img class="image" :src="sperm_image" :aspect-ratio="1"  alt="">
+      <v-flex md6 sm6 xs12>
+        <img class="image" :src="sperm_image" :aspect-ratio="1"  alt="" style="width:100%">
         </img>
 
         <!--{{slide_id}}-->
         <!--{{user_id}}-->
 
       </v-flex>
-      <v-flex md6 xs12>
+      <v-flex md6 sm6 xs12>
         <!--<v-layout align-space-around justify-space-around  row fill-height fill-width wrap>-->
         <!--<v-flex md12 xs4>-->
         <!--<v-btn color="success">Normal</v-btn>-->
@@ -43,11 +43,11 @@
               <v-flex
                 v-for="n in 12"
                 :key="n"
-                xs3
-                md3
+                xs4
+                md4
               >
                 <v-item>
-                  <v-card class="d-flex align-center card-custom" dark
+                  <v-card class="d-flex align-center card-custom" light
                           @click="give_label(n)">
                     <div width=100% height=100% style="text-align:center">
                       {{Active[n]}}
@@ -59,17 +59,17 @@
           </v-container>
         </v-item-group>
 
-        <v-item-group>
+        <!-- <v-item-group>
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex
-                v-for="n in 3"
+                v-for="n in 1"
                 :key="n"
-                xs4
-                md4
+                xs12
+                md12
               >
                 <v-item>
-                  <v-card class="d-flex align-center card-custom" dark
+                  <v-card class="d-flex align-center card-custom" light
                           @click="toggleon(Active1[n])">
                     <div width=100% height=100% style="text-align:center">
                       {{Active1[n]}}
@@ -79,7 +79,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-        </v-item-group>
+        </v-item-group> -->
 
       </v-flex>
     </v-layout>
@@ -97,8 +97,8 @@
       cors:"https://cors-anywhere.herokuapp.com/",
       sperm_image:null,
 
-      Active:["Saab", "Volvo", "BMW","Saab", "Volvo", "BMW","Saab", "Volvo", "BMW","Saab", "Volvo", "BMW", "Audi"],
-      Active1: ["chuck","Previous", "Not Sperm", "Next"],
+      // Active:["Saab", "Volvo", "BMW","Saab", "Volvo", "BMW","Saab", "Volvo", "BMW","Saab", "Volvo", "BMW", "Audi"],
+      Active:["chuck","Normal Sperm","Abnormal acrosomes","Abnormal heads","Detached heads","Proximal droplets", "Distal droplets","Bent or coiled midpieces", "Other midpiece abnormalities","Hairpin or bent tail","Coiled tails","Other cells","Not sperm/cannot label"],
       label: "",
       imageno:"",
       slide:"",

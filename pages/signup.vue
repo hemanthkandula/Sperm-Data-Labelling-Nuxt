@@ -16,14 +16,14 @@
                   </template> -->
                   <span>Source</span>
                 </v-tooltip>
-                <v-tooltip right>
+                <!-- <v-tooltip right>
                   <template v-slot:activator="{ on }">
                     <v-btn icon large href="https://codepen.io/johnjleider/pen/wyYVVj" target="_blank" v-on="on">
                       <v-icon large>mdi-codepen</v-icon>
                     </v-btn>
                   </template>
                   <span>Codepen</span>
-                </v-tooltip>
+                </v-tooltip> -->
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -34,6 +34,7 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn  @click="postPost" color="primary">Signup</v-btn>
+                <v-btn  @click="postPost1" color="primary">Go to login page</v-btn>
 
 
               </v-card-actions>
@@ -60,6 +61,10 @@ const axios = require('axios');
     },
     methods:{
 
+        postPost1:function(){
+        this.$router.push({ path: `/login` }) // -> /user/123
+
+        },
         postPost:function(){
 
 

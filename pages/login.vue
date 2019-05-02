@@ -16,14 +16,14 @@
                   </template> -->
                   <span>Source</span>
                 </v-tooltip>
-                <v-tooltip right>
+                <!-- <v-tooltip right>
                   <template v-slot:activator="{ on }">
                     <v-btn icon large href="https://codepen.io/johnjleider/pen/wyYVVj" target="_blank" v-on="on">
                       <v-icon large>mdi-codepen</v-icon>
                     </v-btn>
                   </template>
                   <span>Codepen</span>
-                </v-tooltip>
+                </v-tooltip> -->
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -34,6 +34,8 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn  @click="postPost" color="primary">Login</v-btn>
+                
+                <v-btn  @click="postPost1" color="primary">Go to signup page</v-btn>
 
 
               </v-card-actions>
@@ -41,8 +43,33 @@
           </v-flex>
         </v-layout>
       </v-container>
+
+      <v-snackbar
+      v-model="snackbar"
+      :bottom="y === 'bottom'"
+      :left="x === 'left'"
+      :multi-line="mode === 'multi-line'"
+      :right="x === 'right'"
+      :timeout="timeout"
+      :top="y === 'top'"
+      :vertical="mode === 'vertical'"
+    >
+      {{ text }}
+      <v-btn
+        color="pink"
+        flat
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
     </v-content>
+          <span v-if="!loading" class="Button__Content">
+          <slot></slot>
+      </span>
   </v-app>
+
+  
 </template>
 
 <script>
@@ -53,16 +80,32 @@ const axios = require('axios');
       drawer: null,
       username: "",
       password: "",
-      resp:""
+      resp:"",
+      loading: { type: Boolean , default: false},
+      snackbar: false,
+        y: 'top',
+        x: null,
+        mode: '',
+        timeout: 6000,
+        text: 'Hello, I\'m a snackbar'
     }),
     props: {
       source: String
     },
     methods:{
 
+        postPost1:function(){
+        this.$router.push({ path: `/signup` }) // -> /user/123
+
+        },
+
+
+
+
         postPost:function(){
-
-
+          this.loading=true
+          console.log("Loading state")
+          console.log(this.loading)
            let data = {
       'username': this.username,
       'password': this.password
@@ -80,11 +123,19 @@ const axios = require('axios');
                             var res = response.data.user
 
               console.log(response.data.user)
+              this.loading=false
+              console.log("Loading state")
+              if(response.data.user==true)
+              {console.log(this.loading)
               // this.$router.push({ name: 'user',params : { res} }) // -> /user/123
               this.$router.push({ path: `/slide/${res}` }) // -> /user/123
-
+              }
               // this.$router.push({ path: 'user', query: { plan: 'private' } })
-
+              else
+              {
+                this.snackbar = true
+                // this.$router.push({path: '/signup'})
+              }
 
 
 

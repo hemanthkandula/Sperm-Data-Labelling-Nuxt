@@ -43,7 +43,7 @@
                 md3
               >
                 <v-item>
-                  <v-card class="d-flex align-center card-custom" dark
+                  <v-card class="d-flex align-center card-custom" light
                           @click="give_label(n)">
                     <div width=100% height=100% style="text-align:center">
                       {{n}}
