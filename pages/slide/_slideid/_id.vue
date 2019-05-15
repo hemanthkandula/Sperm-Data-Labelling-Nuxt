@@ -2,8 +2,14 @@
   <v-container>
     <v-layout class="temp" row wrap>
       <v-flex md6 sm6 xs12>
-        <img class="image" :src="sperm_image" :aspect-ratio="1"  alt="" style="width:100%">
+        <img v-if="batch_completed" class="image" src="~/assets/batch_completed.png" :aspect-ratio="1"  alt="" style="width:100%">
         </img>
+        <img v-if="everything_completed" class="image" src="~/assets/everything_completed.png" :aspect-ratio="1"  alt="" style="width:100%">
+        </img>
+        <img v-if="not_completed" class="image" :src="sperm_image" :aspect-ratio="1"  alt="" style="width:100%">
+        </img>
+
+
 
         <!--{{slide_id}}-->
         <!--{{user_id}}-->
@@ -104,8 +110,12 @@
       slide:"",
       image_name:"",
       slide_id:"",
-      user_id:""
+      user_id:"",
+      batch_completed:false,
+      everything_completed:false,
+      not_completed:false
     }),
+
     watch:{
 
       image_name: function () {
@@ -199,13 +209,30 @@
 
           .then((response) => {
 
-            if(response.data.response){
+            if(response.data.response==="success"){
 
               console.log("success")
+              this.not_completed = true
+              this.batch_completed = false
+              this.everything_completed = false
 
               this.image_name = response.data.image_name
               return response.data.image_name
 
+            }
+            else if(response.data.response==="slide_completed")
+            {
+              this.not_completed = false
+
+              this.batch_completed = true
+              this.everything_completed = false
+            }
+
+            else if(response.data.response==="completed")
+            {
+              this.batch_completed = false
+              this.not_completed = false
+              this.everything_completed = true
             }
             // var res = response.data.user
 
@@ -234,7 +261,7 @@
           "image_name": this.image_name
         }
 
-        let data1 = {"image_name":"Ash11_0021_955_930.png"}
+        // let data1 = {"image_name":"Ash11_0021_955_930.png"}
 
         const get_image_url = 'https://shafieelabdatalabeling.tk/get_image';
 

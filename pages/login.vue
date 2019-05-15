@@ -87,7 +87,7 @@ const axios = require('axios');
         x: null,
         mode: '',
         timeout: 6000,
-        text: 'Hello, I\'m a snackbar'
+        text: 'Username or Password is Invalid, Please try again.'
     }),
     props: {
       source: String
@@ -122,10 +122,10 @@ const axios = require('axios');
               this.resp= response.data.user
                             var res = response.data.user
 
-              console.log(response.data.user)
+              console.log(response.data)
               this.loading=false
               console.log("Loading state")
-              if(response.data.user==true)
+              if(response.data.response==="success")
               {console.log(this.loading)
               // this.$router.push({ name: 'user',params : { res} }) // -> /user/123
               this.$router.push({ path: `/slide/${res}` }) // -> /user/123
@@ -133,6 +133,7 @@ const axios = require('axios');
               // this.$router.push({ path: 'user', query: { plan: 'private' } })
               else
               {
+                this.text = response.data.error
                 this.snackbar = true
                 // this.$router.push({path: '/signup'})
               }
